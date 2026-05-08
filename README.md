@@ -35,7 +35,6 @@ This project uses named volumes with a `local` driver and a bind mount configura
 ### Main Design Choices
 
 - **Base image**: `debian:bookworm` as required by the subject (penultimate stable Debian release).
-- **Secrets**: Database passwords are stored in plaintext files under `secrets/` (excluded from Git) rather than hardcoded in the `.env` file.
 - **Volumes**: Named volumes with a local bind driver persist MariaDB and WordPress data under `/home/mtaramar/data/`.
 - **Networking**: All containers communicate over the `inception` bridge network, isolated from the host.
 - **WordPress setup**: wp-cli is used to automate the WordPress installation and user creation at container startup, without any manual web UI interaction.
@@ -57,7 +56,7 @@ This project uses named volumes with a `local` driver and a bind mount configura
   mkdir -p /home/mtaramar/data/mariadb
   mkdir -p /home/mtaramar/data/wordpress
   ```
-- A `srcs/.env` file with the required environment variables (see `.env.example`)
+- A `srcs/.env` file with the required environment variables
 
 ### Build and Run
 
